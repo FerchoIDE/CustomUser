@@ -1,9 +1,9 @@
 Bundle-Name: CustomUser-api
 Bundle-SymbolicName: com.consistent.queries.api
 Bundle-Version: 1.0.0
-Export-Package:\
-	com.consistent.queries.exception,\
-	com.consistent.queries.model,\
-	com.consistent.queries.service,\
-	com.consistent.queries.service.persistence
+Export-Package: \
+	com.liferay.product.service.exception,\
+	com.liferay.product.service.model,\
+	com.liferay.product.service.service,\
+	com.liferay.product.service.service.persistence
 -includeresource: META-INF/service.xml=../CustomUser-service/service.xml

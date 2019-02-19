@@ -14,6 +14,9 @@
 
 package com.liferay.product.service.service.impl;
 
+import java.util.List;
+
+import com.liferay.product.service.model.Product;
 import com.liferay.product.service.service.base.ProductServiceBaseImpl;
 
 /**
@@ -36,4 +39,8 @@ public class ProductServiceImpl extends ProductServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.product.service.service.ProductServiceUtil} to access the product remote service.
 	 */
+	
+	public List<Product> getProductByPrice(long price) {
+		  return productFinder.getProductByPrice(price);
+		 }
 }

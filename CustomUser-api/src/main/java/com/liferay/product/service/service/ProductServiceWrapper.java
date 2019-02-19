@@ -43,6 +43,12 @@ public class ProductServiceWrapper implements ProductService,
 	}
 
 	@Override
+	public java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
+		long price) {
+		return _productService.getProductByPrice(price);
+	}
+
+	@Override
 	public ProductService getWrappedService() {
 		return _productService;
 	}

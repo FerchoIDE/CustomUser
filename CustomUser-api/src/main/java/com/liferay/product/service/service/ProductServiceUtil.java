@@ -51,6 +51,11 @@ public class ProductServiceUtil {
 		return getService().getOSGiServiceIdentifier();
 	}
 
+	public static java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
+		long price) {
+		return getService().getProductByPrice(price);
+	}
+
 	public static ProductService getService() {
 		return _serviceTracker.getService();
 	}

@@ -16,9 +16,16 @@ package com.liferay.product.service.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.liferay.product.service.service.ProductServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link com.liferay.product.service.service.ProductServiceUtil} service utility. The
+ * {@link ProductServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,25 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see ProductServiceHttp
  * @see com.liferay.product.service.model.ProductSoap
- * @see com.liferay.product.service.service.ProductServiceUtil
+ * @see ProductServiceUtil
  * @generated
  */
 @ProviderType
 public class ProductServiceSoap {
+	public static com.liferay.product.service.model.ProductSoap[] getProductByPrice(
+		long price) throws RemoteException {
+		try {
+			java.util.List<com.liferay.product.service.model.Product> returnValue =
+				ProductServiceUtil.getProductByPrice(price);
+
+			return com.liferay.product.service.model.ProductSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(ProductServiceSoap.class);
 }
