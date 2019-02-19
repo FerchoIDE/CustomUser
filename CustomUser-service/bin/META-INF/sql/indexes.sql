@@ -1,0 +1,1 @@
+create index IX_4B0E7A2C on product_details (uuid_[$COLUMN_LENGTH:75$], companyId);
