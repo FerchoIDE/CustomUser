@@ -14,10 +14,16 @@
 
 package com.liferay.product.service.service.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.product.service.model.Product;
 import com.liferay.product.service.service.base.ProductServiceBaseImpl;
+import com.liferay.product.service.service.persistence.impl.ProductFinderImpl;
+
+import aQute.bnd.annotation.ProviderType;
 
 /**
  * The implementation of the product remote service.
@@ -33,14 +39,18 @@ import com.liferay.product.service.service.base.ProductServiceBaseImpl;
  * @see ProductServiceBaseImpl
  * @see com.liferay.product.service.service.ProductServiceUtil
  */
+@ProviderType
 public class ProductServiceImpl extends ProductServiceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.product.service.service.ProductServiceUtil} to access the product remote service.
 	 */
+	private static final Log log = LogFactoryUtil.getLog(ProductServiceImpl.class);
 	
-	public List<Product> getProductByPrice(long price) {
+	public List<Product> getProductByPrice(long price) throws SQLException {
+		  log.info(price);
+		  System.out.println(price);
 		  return productFinder.getProductByPrice(price);
 		 }
 }

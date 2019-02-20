@@ -249,7 +249,7 @@ public class ProductLocalServiceWrapper implements ProductLocalService,
 
 	@Override
 	public java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
-		long price) {
+		long price) throws java.sql.SQLException {
 		return _productLocalService.getProductByPrice(price);
 	}
 

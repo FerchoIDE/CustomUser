@@ -56,7 +56,7 @@ import com.liferay.product.service.service.ProductServiceUtil;
 @ProviderType
 public class ProductServiceHttp {
 	public static java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
-		HttpPrincipal httpPrincipal, long price) {
+		HttpPrincipal httpPrincipal, long price) throws java.sql.SQLException {
 		try {
 			MethodKey methodKey = new MethodKey(ProductServiceUtil.class,
 					"getProductByPrice", _getProductByPriceParameterTypes0);
@@ -69,6 +69,10 @@ public class ProductServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
+				if (e instanceof java.sql.SQLException) {
+					throw (java.sql.SQLException)e;
+				}
+
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 

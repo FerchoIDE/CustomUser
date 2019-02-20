@@ -14,6 +14,7 @@
 
 package com.liferay.product.service.service.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.liferay.product.service.model.Product;
@@ -43,7 +44,7 @@ public class ProductLocalServiceImpl extends ProductLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.product.service.service.ProductLocalServiceUtil} to access the product local service.
 	 */
-	public List<Product> getProductByPrice(long price) {
+	public List<Product> getProductByPrice(long price) throws SQLException {
 		  return productFinder.getProductByPrice(price);
 		 }
 

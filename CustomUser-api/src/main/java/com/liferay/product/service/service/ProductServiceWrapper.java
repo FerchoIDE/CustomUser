@@ -44,7 +44,7 @@ public class ProductServiceWrapper implements ProductService,
 
 	@Override
 	public java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
-		long price) {
+		long price) throws java.sql.SQLException {
 		return _productService.getProductByPrice(price);
 	}
 

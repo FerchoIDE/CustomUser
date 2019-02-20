@@ -28,6 +28,8 @@ import com.liferay.portal.kernel.transaction.Transactional;
 
 import com.liferay.product.service.model.Product;
 
+import java.sql.SQLException;
+
 import java.util.List;
 
 /**
@@ -63,5 +65,6 @@ public interface ProductService extends BaseService {
 	public java.lang.String getOSGiServiceIdentifier();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Product> getProductByPrice(long price);
+	public List<Product> getProductByPrice(long price)
+		throws SQLException;
 }

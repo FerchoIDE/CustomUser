@@ -52,7 +52,7 @@ public class ProductServiceUtil {
 	}
 
 	public static java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
-		long price) {
+		long price) throws java.sql.SQLException {
 		return getService().getProductByPrice(price);
 	}
 

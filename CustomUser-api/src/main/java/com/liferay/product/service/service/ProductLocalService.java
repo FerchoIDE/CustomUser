@@ -36,6 +36,8 @@ import com.liferay.product.service.model.Product;
 
 import java.io.Serializable;
 
+import java.sql.SQLException;
+
 import java.util.List;
 
 /**
@@ -216,7 +218,8 @@ public interface ProductLocalService extends BaseLocalService,
 		int end, OrderByComparator<T> orderByComparator);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Product> getProductByPrice(long price);
+	public List<Product> getProductByPrice(long price)
+		throws SQLException;
 
 	/**
 	* Returns a range of all the products.

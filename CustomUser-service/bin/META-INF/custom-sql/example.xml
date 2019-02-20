@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<custom-sql>
-   <sql id="getAllProduct"> 
-      <![CDATA[ 
-           SELECT * from product_details 
-           where productPrice=?
-]]>
-   </sql>
 </custom-sql>

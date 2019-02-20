@@ -23,5 +23,5 @@ import aQute.bnd.annotation.ProviderType;
 @ProviderType
 public interface ProductFinder {
 	public java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
-		long price);
+		long price) throws java.sql.SQLException;
 }
