@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <sql id="getAllProduct"> 
-	<![CDATA[ SELECT * from product_details where productPrice=?]]>
+<custom-sql>
+   <sql id="getAllProduct"> 
+	<![CDATA[SELECT * from product_details where productPrice=?]]>
  </sql>
+  <sql id="addProduct"> 
+	<![CDATA[INSERT INTO product_details VALUES (?, ?, ?, ?, ?)]]>
+ </sql>
+</custom-sql>

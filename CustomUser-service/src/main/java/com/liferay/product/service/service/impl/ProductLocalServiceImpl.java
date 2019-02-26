@@ -17,6 +17,9 @@ package com.liferay.product.service.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.liferay.portal.kernel.search.IndexableType;
+import com.liferay.portal.kernel.transaction.Propagation;
+import com.liferay.portal.kernel.transaction.Transactional;
 import com.liferay.product.service.model.Product;
 import com.liferay.product.service.service.base.ProductLocalServiceBaseImpl;
 
@@ -44,9 +47,20 @@ public class ProductLocalServiceImpl extends ProductLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.product.service.service.ProductLocalServiceUtil} to access the product local service.
 	 */
+//	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Product> getProductByPrice(long price) throws SQLException {
 		  return productFinder.getProductByPrice(price);
 		 }
+	 
+	 private int addProduct(String uuid,
+			 					String productId,
+			 					String companyId,String productName,
+			 					String productPrice) throws SQLException {
+		// TODO Auto-generated method stub
+		 return productFinder.addInventory(uuid, productId, companyId, productName, productPrice);
+
+	}
 
 	
 }

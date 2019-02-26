@@ -85,8 +85,46 @@ public class ProductServiceHttp {
 		}
 	}
 
+	public static int addProduct(HttpPrincipal httpPrincipal,
+		java.lang.String uuid, java.lang.String productId,
+		java.lang.String companyId, java.lang.String productName,
+		java.lang.String productPrice) throws java.sql.SQLException {
+		try {
+			MethodKey methodKey = new MethodKey(ProductServiceUtil.class,
+					"addProduct", _addProductParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, uuid,
+					productId, companyId, productName, productPrice);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof java.sql.SQLException) {
+					throw (java.sql.SQLException)e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return ((Integer)returnObj).intValue();
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(ProductServiceHttp.class);
 	private static final Class<?>[] _getProductByPriceParameterTypes0 = new Class[] {
 			long.class
+		};
+	private static final Class<?>[] _addProductParameterTypes1 = new Class[] {
+			java.lang.String.class, java.lang.String.class,
+			java.lang.String.class, java.lang.String.class,
+			java.lang.String.class
 		};
 }

@@ -80,5 +80,22 @@ public class ProductServiceSoap {
 		}
 	}
 
+	public static int addProduct(java.lang.String uuid,
+		java.lang.String productId, java.lang.String companyId,
+		java.lang.String productName, java.lang.String productPrice)
+		throws RemoteException {
+		try {
+			int returnValue = ProductServiceUtil.addProduct(uuid, productId,
+					companyId, productName, productPrice);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(ProductServiceSoap.class);
 }

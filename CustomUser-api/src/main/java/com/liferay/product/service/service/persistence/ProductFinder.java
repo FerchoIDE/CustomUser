@@ -24,4 +24,8 @@ import aQute.bnd.annotation.ProviderType;
 public interface ProductFinder {
 	public java.util.List<com.liferay.product.service.model.Product> getProductByPrice(
 		long price) throws java.sql.SQLException;
+
+	public int addInventory(java.lang.String uuid, java.lang.String productId,
+		java.lang.String companyId, java.lang.String productName,
+		java.lang.String productPrice) throws java.sql.SQLException;
 }

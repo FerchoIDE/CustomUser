@@ -41,6 +41,14 @@ public class ProductServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to {@link com.liferay.product.service.service.impl.ProductServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static int addProduct(java.lang.String uuid,
+		java.lang.String productId, java.lang.String companyId,
+		java.lang.String productName, java.lang.String productPrice)
+		throws java.sql.SQLException {
+		return getService()
+				   .addProduct(uuid, productId, companyId, productName,
+			productPrice);
+	}
 
 	/**
 	* Returns the OSGi service identifier.

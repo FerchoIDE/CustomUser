@@ -19,6 +19,7 @@ import aQute.bnd.annotation.ProviderType;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
+import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.spring.osgi.OSGiBeanProperties;
@@ -56,6 +57,9 @@ public interface ProductService extends BaseService {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link ProductServiceUtil} to access the product remote service. Add custom service methods to {@link com.liferay.product.service.service.impl.ProductServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public int addProduct(java.lang.String uuid, java.lang.String productId,
+		java.lang.String companyId, java.lang.String productName,
+		java.lang.String productPrice) throws SQLException;
 
 	/**
 	* Returns the OSGi service identifier.
@@ -64,6 +68,7 @@ public interface ProductService extends BaseService {
 	*/
 	public java.lang.String getOSGiServiceIdentifier();
 
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Product> getProductByPrice(long price)
 		throws SQLException;

@@ -19,9 +19,11 @@ import java.util.List;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.search.IndexableType;
+import com.liferay.portal.kernel.transaction.Propagation;
+import com.liferay.portal.kernel.transaction.Transactional;
 import com.liferay.product.service.model.Product;
 import com.liferay.product.service.service.base.ProductServiceBaseImpl;
-import com.liferay.product.service.service.persistence.impl.ProductFinderImpl;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -48,9 +50,20 @@ public class ProductServiceImpl extends ProductServiceBaseImpl {
 	 */
 	private static final Log log = LogFactoryUtil.getLog(ProductServiceImpl.class);
 	
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Product> getProductByPrice(long price) throws SQLException {
-		  log.info(price);
-		  System.out.println(price);
 		  return productFinder.getProductByPrice(price);
 		 }
+
+
+	public int addProduct(String uuid,
+			 			   String productId,
+			 			   String companyId,
+			 			   String productName,
+			 			   String productPrice) throws SQLException {
+		 return productFinder.addInventory(uuid, productId, companyId, productName, productPrice);
+
+	}
+
 }

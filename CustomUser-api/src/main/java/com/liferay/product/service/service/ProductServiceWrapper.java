@@ -32,6 +32,14 @@ public class ProductServiceWrapper implements ProductService,
 		_productService = productService;
 	}
 
+	@Override
+	public int addProduct(java.lang.String uuid, java.lang.String productId,
+		java.lang.String companyId, java.lang.String productName,
+		java.lang.String productPrice) throws java.sql.SQLException {
+		return _productService.addProduct(uuid, productId, companyId,
+			productName, productPrice);
+	}
+
 	/**
 	* Returns the OSGi service identifier.
 	*

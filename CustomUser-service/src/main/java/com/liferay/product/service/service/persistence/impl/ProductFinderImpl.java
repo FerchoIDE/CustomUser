@@ -23,10 +23,10 @@ import com.liferay.product.service.service.persistence.ProductFinder;
  */
 public class ProductFinderImpl extends ProductFinderBaseImpl implements ProductFinder {
 	private static final Log log = LogFactoryUtil.getLog(ProductFinderImpl.class);
-
+    
 	
 	 public List<Product>  getProductByPrice(long price) throws SQLException{
-		 CustomSQL _customSQL = new CustomSQL();
+		  CustomSQL _customSQL = new CustomSQL(); 
 		  Session session=null;
 		  try{
 			 System.out.println("ProductFinderImpl"+price);
@@ -54,7 +54,35 @@ public class ProductFinderImpl extends ProductFinderBaseImpl implements ProductF
 		  return null;
 		 }
 	 
-	 
+	 public int addInventory(String uuid, 
+			 				 String productId, 
+			 				 String companyId,
+			 				 String productName,
+			 				 String productPrice
+				) throws SQLException {
+		 CustomSQL _customSQL = new CustomSQL();	
+		 Session session = null;
+			try {
+				session = openSession();
+				String sql=_customSQL.get(getClass(),"addProduct");
+				System.out.println(sql);
+				SQLQuery queryObject = session.createSQLQuery(sql);
+				queryObject.setCacheable(false);
+				queryObject.addEntity("Product",ProductImpl.class);
+				QueryPos qPos = QueryPos.getInstance(queryObject);
+				qPos.add(uuid);
+				qPos.add(productId);
+				qPos.add(companyId);
+				qPos.add(productName);
+				qPos.add(productPrice);
+				return queryObject.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+			closeSession(session);
+			}
+			return 0;
+		}
 	
 	 	
 }
